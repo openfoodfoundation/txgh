@@ -52,3 +52,18 @@ sh start-server.sh
 crontab -e
 #   */5 * * * * sh -c "cd /home/transifex/txgh && sh start-server.sh"
 ```
+
+## Testing
+
+To check if the application is running, you can check for an HTTP 200 response
+at `/health_check`.
+
+```sh
+curl -v http://foo:bar@0.0.0.0:9292/health_check
+```
+
+You can simulate a Transifex webhook event triggering a real commit:
+
+```sh
+curl http://0.0.0.0:9292/hooks/transifex -d '{"project": "open-food-network", "translated": "100", "resource": "enyml", "event": "translation_completed", "language": "fr"}'
+```
