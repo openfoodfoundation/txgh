@@ -39,7 +39,8 @@ export TX_CONFIG_PATH="./config/tx.config"
 export TX_USERNAME="transifex@openfoodnetwork.org"
 export TX_PASSWORD="Transifex password"
 export TX_PUSH_TRANSLATIONS_TO="openfoodfoundation/openfoodnetwork"
-export TX_PUSH_TRIGGER_REVIEWED_OR_TRANSLATED="translated"
+# empty trigger means: push in either case
+export TX_PUSH_TRIGGER_REVIEWED_OR_TRANSLATED=""
 export TX_WEBHOOK_SECRET=""
 ' > config/secret/env.sh
 
