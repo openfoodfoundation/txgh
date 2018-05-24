@@ -43,7 +43,7 @@ module Txgh
 
             logger.info("make github commit for branch: #{branch}")
 
-            repo.api.commit(
+            repo.api.commit_to_pull_request(
               repo.name, branch, translation_path, translations
             )
           end

@@ -32,7 +32,7 @@ describe TransifexHookHandler do
 
   it 'downloads translations and pushes them to the correct branch (head)' do
     expect(github_api).to(
-      receive(:commit).with(
+      receive(:commit_to_pull_request).with(
         repo_name, "heads/#{branch}", "translations/#{language}/sample.po", translations
       )
     )
@@ -54,7 +54,7 @@ describe TransifexHookHandler do
       end
 
       expect(github_api).to(
-        receive(:commit).with(
+        receive(:commit_to_pull_request).with(
           repo_name, ref, "translations/#{language}/sample.po", translations
         )
       )
@@ -68,7 +68,7 @@ describe TransifexHookHandler do
 
     it 'downloads translations and pushes them to the tag' do
       expect(github_api).to(
-        receive(:commit).with(
+        receive(:commit_to_pull_request).with(
           repo_name, "tags/my_tag", "translations/#{language}/sample.po", translations
         )
       )

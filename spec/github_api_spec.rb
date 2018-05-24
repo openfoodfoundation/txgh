@@ -62,4 +62,15 @@ describe GithubApi do
       api.get_commit(repo, sha)
     end
   end
+
+  describe '#pull_request_open?' do
+    it 'checks if an open pull request exists' do
+      expect(client).to receive(:pulls).with(
+        repo,
+        {state: "open", head: "my_org:master"}
+      ).and_return([])
+      result = api.pull_request_open?(repo, "heads/#{branch}")
+      expect(result).to be false
+    end
+  end
 end
